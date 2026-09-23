@@ -1,37 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Background Music Setup
-    const bgMusic = new Audio("assets/music.mp3");
-    bgMusic.loop = true;
-    let musicStarted = false;
+    const oblivionScreen = document.getElementById("oblivion-screen");
+    const oblivionText = document.getElementById("oblivion-text");
 
-    // Click Sound Path
-    const clickSoundPath = "assets/click.mp3";
-
-    // Global click sound effect for any mouse click
-    document.addEventListener("mousedown", () => {
-        const clickSound = new Audio(clickSoundPath);
-        clickSound.currentTime = 0;
-        clickSound.volume = 0.5; // Lowered from default 1.0
-        clickSound.play().catch((err) => {
-            console.warn("Click sound play blocked or missing:", err);
-        });
-    });
-
-    function playMusic() {
-        if (!musicStarted) {
-            bgMusic.play().then(() => {
-                musicStarted = true;
-            }).catch((err) => {
-                console.warn("Background music autoplay blocked:", err);
-            });
+    function unlockSite() {
+        sessionStorage.removeItem("devotion_forgotten");
+        if (oblivionScreen) {
+            oblivionScreen.classList.remove("locked", "active");
         }
+        window.location.reload();
     }
 
-    playMusic();
-    ["click", "touchstart", "keydown"].forEach((event) => {
-        document.addEventListener(event, playMusic, { once: true });
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            unlockSite();
+        }
     });
 
+    if (oblivionScreen) {
+        oblivionScreen.addEventListener("dblclick", unlockSite);
+    }
+
+    if (sessionStorage.getItem("devotion_forgotten") === "true") {
+        oblivionText.textContent = "You have no access to this journey anymore.\nClear your browser history to return.";
+        oblivionScreen.classList.add("locked"); 
+        return; 
+    }
+
+    const startScreen = document.getElementById("start-screen");
+
+    const landingHeader = document.getElementById("landing-header");
+    const defaultHeader = document.getElementById("default-header");
+    const defaultInfoBtn = document.getElementById("default-info-btn");
+
+    const infoBtn = document.getElementById("info-btn");
+    const closeBtn = document.getElementById("close-btn");
+    const infoModal = document.getElementById("info-modal");
+    const infoTypedText = document.getElementById("typed-text");
+    const infoCursor = document.getElementById("cursor");
+    
+    const exitBtn = document.getElementById("exit-btn"); ```javascript
+document.addEventListener("DOMContentLoaded", () => {
     const oblivionScreen = document.getElementById("oblivion-screen");
     const oblivionText = document.getElementById("oblivion-text");
 
@@ -616,7 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (particles.length === 0) {
             for(let i = 0; i < 500; i++) particles.push(new FireParticle(false)); 
-            for(let i = 0; i < 150; i++) particles.push(new FireParticle(true));     
+            for(let i = 0; i < 150; i++) particles.push(new FireParticle(true));    
         }
     }
     window.addEventListener('resize', resize);
