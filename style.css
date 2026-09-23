@@ -1,7 +1,7 @@
 /* 1. Global Setup & Typography */
 @font-face {
     font-family: 'KyivType Serif';
-    src: url('assets/KyivTypeSerif-Medium.otf') format('opentype');
+    src: url('KyivTypeSerif-Medium.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -215,7 +215,7 @@ body, html {
     max-width: 95vw;
     height: 500px;
     max-height: 85vh;
-    background: url('assets/white box.svg') no-repeat center center;
+    background: url('white box.svg') no-repeat center center;
     background-size: 100% 100%;
 }
 
@@ -283,7 +283,7 @@ body, html {
     width: 100%;
     height: 500px; 
     max-height: 85vh;
-    background: url('assets/white box.svg') no-repeat center center;
+    background: url('white box.svg') no-repeat center center;
     background-size: 100% 100%;
 }
 
@@ -401,11 +401,11 @@ body, html {
 
 /* Custom Mouse Cursor */
 body {
-    cursor: url('assets/cursor.svg'), auto; 
+    cursor: url('cursor.svg'), auto; 
 }
 
 button, a, input, .icon-btn {
-    cursor: url('assets/cursor.svg'), pointer;
+    cursor: url('cursor.svg'), pointer;
 }
 
 /* Cursor Gap Layout & Interactive Glow */
